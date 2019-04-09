@@ -2,7 +2,10 @@ const Joi = require("joi");
 const logger = require("./logger");
 const helmet = require("helmet");
 const morgan = require("morgan");
-const config = require("config");
+// const config = require("config");
+// const startupDebugger = require("debug")("app:startup");
+// const dbDebugger = require("debug")("app:db");
+const debug = require("debug")("app:startup");
 
 const express = require("express");
 const app = express();
@@ -16,14 +19,18 @@ app.use(express.static("public"));
 app.use(helmet());
 
 // configuration
-console.log("Application Name: " + config.get("name"));
-console.log("Mail Server: " + config.get("mail.host"));
-console.log("Mail Password: " + config.get("mail.password"));
+// console.log("Application Name: " + config.get("name"));
+// console.log("Mail Server: " + config.get("mail.host"));
+// console.log("Mail Password: " + config.get("mail.password"));
 
 if (app.get("env") === "development") {
   app.use(morgan("tiny"));
-  console.log("Morgan enabled...");
+  // startupDebugger("Morgan enabled....");
+  debug("Morgan enabled....");
 }
+
+// DB work....
+// dbDebugger("Connected to Databases....");
 
 app.use(logger);
 
