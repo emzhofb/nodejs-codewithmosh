@@ -75,3 +75,15 @@ describe("getCurrencies", () => {
     expect(result).toEqual(expect.arrayContaining(["EUR", "USD", "AUD"]));
   });
 });
+
+describe("getProduct", () => {
+  it("should return product with the given id", () => {
+    const result = lib.getProduct(1);
+    // expect(result).toBe({ id: 1, price: 10 }); // can't use toBe because it must in one memory
+    // expect(result).toEqual({ id: 1, price: 10 });
+    // or use this if we doesn't want to got failed test even we pass another key of object
+    expect(result).toMatchObject({ id: 1, price: 10 });
+    // or use
+    expect(result).toHaveProperty("id", 1); // first argument is key, the second is value
+  });
+});
