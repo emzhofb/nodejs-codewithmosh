@@ -109,6 +109,7 @@ describe("applyDiscount", () => {
   it("should apply 10% discount if customer has more than 10 points", () => {
     db.getCustomerSync = function(customerId) {
       console.log("fake reading customer.....");
+
       return {
         id: customerId,
         points: 20
