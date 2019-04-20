@@ -32,7 +32,7 @@ describe("fizzBuzz", () => {
   });
 
   it("should return input if input is not divisible by 3 or 5", () => {
-    const result = lib.fizzBuzz(1);
-    expect(result).toBe(1);
+    const result = lib.fizzBuzz(7);
+    expect(result).toBe(7);
   });
 });
