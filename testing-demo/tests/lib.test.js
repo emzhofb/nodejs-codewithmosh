@@ -47,3 +47,31 @@ describe("greet", () => {
     expect(result).toContain("Mosh");
   });
 });
+
+describe("getCurrencies", () => {
+  it("should return supported currencies", () => {
+    const result = lib.getCurrencies();
+
+    /*
+    // general ways to test this function
+    expect(result).toBeDefined(); // too general, doesn't check the value
+    // another ways
+    expect(result).not.toBeNull(); // also doesn't check the value
+
+    // too specific
+    expect(result[0]).toBe("USD");
+    expect(result[1]).toBe("AUD");
+    expect(result[2]).toBe("EUR");
+    // another ways
+    expect(result.length).toBe(3);
+    
+    // proper way
+    expect(result).toContain("USD");
+    expect(result).toContain("AUD");
+    expect(result).toContain("EUR");
+    */
+
+    // ideal way
+    expect(result).toEqual(expect.arrayContaining(["EUR", "USD", "AUD"]));
+  });
+});
